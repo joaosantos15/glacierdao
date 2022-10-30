@@ -23,9 +23,6 @@
 
 // PUSH1 input_size PUSH1 input_offset  PUSH1 method PUSH1 value PUSH1 dst PUSH1 _gas
 
-// dummy dealID: 14343316 // u64; https://docs.rs/fvm_shared/2.0.0/fvm_shared/deal/type.DealID.html
-// dummy pieceCID: baga6ea4seaqpfihmtat2rpasmdk73wemh7egdj7tjc6x62cenbanwf4zgtgjeoq // 512 bits https://docs.rs/cid/0.8.6/cid/type.Cid.html
-
 /* 
 PUSH32 input_size // is this the size of value in bytes?
 PUSH32 input_offset // is this 32 bytes input_size + 32 bytes input_offset + 32 bytes method + 32 bytes value ?
