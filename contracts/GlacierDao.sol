@@ -123,6 +123,7 @@ contract GlacierDao {
             targetRepo.stored = true;    
             targetRepo.spAddress = msg.sender;
         }
+        repos[url] = targetRepo;
     }
 
     // Stage 3
@@ -141,8 +142,13 @@ contract GlacierDao {
     function claimReward(string memory url) public {
         require(epochStage == 5,"Incorrect stage for claimReward");
         Repo memory targetRepo = repos[url];
+
+        require(targetRepo.yesVotes > targetRepo.noVotes, "This deal has not been accepted by the DAO");
+
         bool isDealValid = isDealStillValid(targetRepo.dealId, targetRepo.pieceCid);
         require(isDealValid, "The deal is no longer valid");
+
+        payable(targetRepo.spAddress).transfer(targetRepo.numberOfVotes);
 
 
 
